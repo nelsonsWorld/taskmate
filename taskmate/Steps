@@ -1,0 +1,7 @@
+To create database entries
+
+Create model config in app's model.py
+
+Register app by going to admin.py and importing in the app folder
+
+link: www.webforefront.com/django/modeldatatypesandvalidation.html

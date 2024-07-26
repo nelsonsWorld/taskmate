@@ -1,9 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from todolist_app.models import TaskList
 
 def todolist(request):
-    return render(request,'todolist.html', {"welcome_text":"Yeahh!!!!"})
-    #return HttpResponse("Welcome To Task Page")
+
+    all_tasks = TaskList.objects.all
+
+     
+    return render(request, 'todolist.html', {'all_tasks': all_tasks})  
+
+    # context = {
+    #     'welcome_text':"Welcome Todolist Page.",
+    # }
+
+     # return render(request, 'todolist.html', context)  
+    # return render(request,'todolist.html', {"welcome_text":"Yeahh!!!!"})
+    # #return HttpResponse("Welcome To Task Page")
 
 
 def contact(request):
