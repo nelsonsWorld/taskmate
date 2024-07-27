@@ -6,12 +6,31 @@
 
 
 {% block content %}
+
+{# Table link: https://getbootstrap.com/docs/4.6/content/tables/ #}
+{# We take the top row of the table to create static headers and the rest is inputted in the for loop #}
   <div class="container">
-    {% for obj in all_tasks %}
-   {# <!-- Jinja2 can use text when passing "{{}}" statements --> #}
-     {{obj.task}} $|$ {{obj.done}}
   </br>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Done</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for obj in all_tasks %}
+        <tr>
+          <td>{{obj.task}}</th>
+          <td>{{obj.done}}</td>
+          <td>Edit</td>
+          <td>Delete</td>
+        </tr>
     {% endfor %}
+      </tbody>
+    </table>
   </div>`
 {% endblock content %}
 
