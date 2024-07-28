@@ -45,15 +45,15 @@
               {% if obj.done %}
               <tr class="table-success">
                 <!-- {# <th scope="row">1</th> #} Search for video adding table success and if statement -->
-                  <td>{{obj.task}}</td>
+                  <td>{{obj.id}} | {{obj.task}}</td>
                   <td>Completed</td>
                   <!-- <td>{{obj.done}}</td> -->
                   <td>Edit</td>
-                  <td>Delete</td>
+                  <td><a href="{% url 'delete_task' obj.id %}">Delete</a></td>
               </tr>
               {% else %}
               <tr>
-                <td>{{obj.task}}</td>
+                <td>{{obj.id}} $ {{obj.task}}</td>
                 <td>Not Completed</td>
                 <!-- <td>{{obj.done}}</td> -->
                 <td>Edit</td>
