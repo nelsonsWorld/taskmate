@@ -18,21 +18,22 @@ def todolist(request):
         all_tasks = TaskList.objects.all
         return render(request, 'todolist.html', {'all_tasks': all_tasks})  
 
-    # context = {
-    #     'welcome_text':"Welcome Todolist Page.",
-    # }
-
-     # return render(request, 'todolist.html', context)  
-    # return render(request,'todolist.html', {"welcome_text":"Yeahh!!!!"})
-    # #return HttpResponse("Welcome To Task Page")
+ 
 
 def delete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     task.delete()
-    
+
     return redirect('todolist')
 
+def edit_task(request, task_id):
+    if request.method == "POST":
 
+        messages.success(request,("Task Edited!"))
+        return redirect('todolist')
+    else:
+        task_obj= TaskList.objects.get(pk=task_id)
+        return render(request, 'edit.html', {'task_obj': task_obj})
 
 def contact(request):
     context = {
