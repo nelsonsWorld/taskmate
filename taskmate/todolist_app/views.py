@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from todolist_app.models import TaskList
 from todolist_app.form import TaskForm 
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 def todolist(request):
 
@@ -15,7 +16,10 @@ def todolist(request):
         messages.success(request,("New Task Added!"))
         return redirect('todolist')
     else:
-        all_tasks = TaskList.objects.all
+        all_tasks = TaskList.objects.all() #ALWAYS ADD THE '()', investigate why later please
+        paginator = Paginator(all_tasks, 5) #the all_tasks are all objects and 5 is how many objects to show
+        page = request.GET.get('pg')
+        all_tasks = paginator.get_page(page)
         return render(request, 'todolist.html', {'all_tasks': all_tasks})  
 
  
@@ -38,6 +42,21 @@ def edit_task(request, task_id):
     else:
         task_obj= TaskList.objects.get(pk=task_id)
         return render(request, 'edit.html', {'task_obj': task_obj})
+    
+def complete_task(request, task_id):
+    task = TaskList.objects.get(pk=task_id)
+    task.done = True
+    task.save()
+
+    return redirect('todolist')
+
+def pending_task(request, task_id):
+    task = TaskList.objects.get(pk=task_id)
+    task.done = False
+    task.save()
+
+    return redirect('todolist')
+
 
 def contact(request):
     context = {
