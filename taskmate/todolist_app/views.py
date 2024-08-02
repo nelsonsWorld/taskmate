@@ -50,6 +50,12 @@ def complete_task(request, task_id):
 
     return redirect('todolist')
 
+def index(request):
+    context = {
+        'index_text': 'Welcome Index Page'
+            }
+    return render(request, 'index.html', context)
+
 def pending_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
     task.done = False
