@@ -8,27 +8,29 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+      <!-- This is to add the favicon after all is said and done. -->
+    <link rel="icon" href="{% static 'image/favicon.ico' %}" type="image/gif" sizes="16x16">
 
     {% block title %}
     {% endblock title %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="{% static 'image/maingb.png' %}" alt="Taskmate"></a>
+        <a class="navbar-brand" href="#"><img src="{% static 'image/maingb.png' %}" alt="Taskmate" width="360" height="250"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="nvbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}"><h1>Home</h1></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'todolist' %}">Todo List</a>
+              <a class="nav-link" href="{% url 'todolist' %}"><h1>Todo List</h1></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'contact' %}">Contact US</a>
+              <a class="nav-link" href="{% url 'contact' %}"><h1>Contact US</h1></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'about' %}">About</a>
+              <a class="nav-link" href="{% url 'about' %}"><h1>About</h1></a>
             </li>
           </ul>
         </div>
