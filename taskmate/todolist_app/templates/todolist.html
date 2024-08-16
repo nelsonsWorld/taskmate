@@ -46,7 +46,7 @@
               {% if obj.done %}
               <tr class="table-success row">
                 <!-- {# <th scope="row">1</th> #} Search for video adding table success and if statement -->
-                  <td class="col-7">{{obj.task}}</td>
+                  <td class="col-7"><del>{{obj.task}}</del></td>
                   <td class="col-3"><a href="{% url 'pending_task' obj.id %}"><button type="button" class="btn btn-dark"> Mark This Task as Pending</button>
                   </a></td>
                   <!-- <td>{{obj.done}}</td> -->
