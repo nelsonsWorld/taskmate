@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>This is the About page!</title>
+{% endblock title %}
+
+
+
+
+{% block content %}
+  <div class="container">
+    <h1>{{ about_text }}</h1>
+  </div>
+<div>
+  <!-- on a template where you want to add a logout button -->
+<form method="POST" action="{% url 'logout' %}">
+  {% csrf_token %}
+  <button type="submit">logout</button>
+</form>
+  </form>
+</div>
+{% endblock content %}    <h1>{{ welcome_text }}</h1>
+</div>

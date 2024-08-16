@@ -18,3 +18,8 @@ def register(request):
         register_form = CustomRegisterForm()
     #  return HttpResponse("Users_app working!")
     return render(request, 'register.html', {'register_form': register_form})
+
+
+def logout1(request):
+    if request.method=="GET":
+        return render(request, 'logout1.html')
