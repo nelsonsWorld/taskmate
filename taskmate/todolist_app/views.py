@@ -31,8 +31,12 @@ def todolist(request):
 @login_required
 def delete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
-    task.delete()
-
+    #Adding "if" statement for security
+    if task.manage == request.user:
+        task.delete()
+    else:
+        messages.error(request,("Access Restricted, You Are Not Allowed."))
+    
     return redirect('todolist')
 
 
@@ -53,8 +57,12 @@ def edit_task(request, task_id):
 @login_required    
 def complete_task(request, task_id):
     task = TaskList.objects.get(pk=task_id)
-    task.done = True
-    task.save()
+    #Adding "if" statement for security
+    if task.manage == request.user:
+        task.done = True
+        task.save()
+    else:
+        messages.error(request,("Access Restricted, You Are Not Allowed."))
 
     return redirect('todolist')
 
