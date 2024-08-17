@@ -14,12 +14,14 @@ def todolist(request):
     if request.method == "POST":
         form = TaskForm(request.POST or None)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.manager = request.user
+            instance.save()
         # import the messages method from the django.contrib module/library
         messages.success(request,("New Task Added!"))
         return redirect('todolist')
     else:
-        all_tasks = TaskList.objects.all() #ALWAYS ADD THE '()', investigate why later please
+        all_tasks = TaskList.objects.filter(manager=request.user) #ALWAYS ADD THE '()', investigate why later please
         paginator = Paginator(all_tasks, 5) #the all_tasks are all objects and 5 is how many objects to show
         page = request.GET.get('pg')
         all_tasks = paginator.get_page(page)
